@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Gift ❤️</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffe6e6;
+      color: #4d2600;
+      text-align: center;
+      cursor: url('heart-cursor.png'), auto;
+    }
+    header {
+      background: url('https://via.placeholder.com/1500x800') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 150px 20px;
+    }
+    header h1 {
+      font-size: 4rem;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 2s ease-in;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .gift-message {
+      font-size: 1.5rem;
+      line-height: 1.6;
+      margin: 20px 0;
+    }
+    .gift-button {
+      padding: 15px 30px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      animation: pulse 2s infinite;
+    }
+    .gift-button:hover {
+      background-color: #e60000;
+      transform: scale(1.1);
+    }
+    .countdown {
+      font-size: 1.5rem;
+      margin: 20px 0;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Your Gift ❤️</h1>
+  </header>
+
+  <div class="container">
+    <div class="gift-message">
+      <p>
+        A special gift for you.
+      </p>
+    </div>
+    <div class="countdown">
+      <p>Your gift will open in <span id="countdown-timer">5</span> seconds...</p>
+    </div>
+    <button class="gift-button" onclick="startCountdown()">Open Your Gift</button>
+  </div>
+
+  <script>
+    // Confetti Animation
+    function openGift() {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+
+      // Replace this with your Google Drive folder link
+      const googleDriveLink = "https://drive.google.com/drive/folders/1-8tsF3wbwFDIInciJLaO9LO1bfBXwGiK?usp=sharing";
+      window.open(googleDriveLink, "_blank");
+    }
+
+    // Countdown Timer
+    function startCountdown() {
+      let countdown = 5;
+      const countdownTimer = document.getElementById('countdown-timer');
+      const giftButton = document.querySelector('.gift-button');
+
+      // Disable the button during countdown
+      giftButton.disabled = true;
+
+      const timer = setInterval(() => {
+        countdown--;
+        countdownTimer.textContent = countdown;
+
+        if (countdown === 0) {
+          clearInterval(timer);
+          openGift();
+        }
+      }, 1000);
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="romantic-music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</body>
+</html>
