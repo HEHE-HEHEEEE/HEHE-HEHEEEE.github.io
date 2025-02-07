@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Marry Me? ❤️</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffe6e6;
+      color: #4d2600;
+      text-align: center;
+      cursor: url('heart-cursor.png'), auto;
+    }
+    header {
+      background: url('https://via.placeholder.com/1500x800') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 150px 20px;
+    }
+    header h1 {
+      font-size: 4rem;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 2s ease-in;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .proposal-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .proposal-buttons button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    #yes-button {
+      background-color: #4CAF50;
+      color: white;
+    }
+    #no-button {
+      background-color: #ff4d4d;
+      color: white;
+      position: absolute;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Will you let me love you forever? Will you be mine, always?" ❤️</h1>
+  </header>
+
+  <div class="container">
+    <p>Cheenu, you are my everything. And I am not leaving you ever.</p>
+    <div class="proposal-buttons">
+      <button id="yes-button" onclick="handleYes()">Yes, I Will!</button>
+      <button id="no-button" onmouseover="moveNoButton()">No</button>
+    </div>
+  </div>
+
+  <script>
+    // Move the "No" button randomly when hovered
+    function moveNoButton() {
+      const noButton = document.getElementById('no-button');
+      const yesButton = document.getElementById('yes-button');
+
+      // Randomize position
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 100);
+      noButton.style.left = `${x}px`;
+      noButton.style.top = `${y}px`;
+
+      // Make the "Yes" button bigger
+      yesButton.style.transform = 'scale(1.2)';
+    }
+
+    // Handle "Yes" button click
+    function handleYes() {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+      alert("I am the happiest person in the world after you came into my life ❤️");
+      window.location.href = 'page5.html'; // Redirect to the next page
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="romantic-music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</body>
+</html>
